@@ -68,7 +68,7 @@ class Component extends React.Component<Props, State>{
                     <form onSubmit={(e) => { this.handleSubmit(e); } }>
                         <input className="form-control" placeholder="Email" id="loginuser" onChange={(e) => { this.handleChangeUSER(e); }} />
                         <input type="password" placeholder="Password" className="form-control" id="loginpas" onChange={(e) => { this.handleChangePAS(e); }} />
-                        <input className="btn btn-lg btn btn-pale btn-block" type="submit" value="ログインする"  />
+                        <input className="btn btn-lg btn btn-pale btn-block" type="submit" value="Log In"  />
                     </form>
                     <br />
                   </div>
