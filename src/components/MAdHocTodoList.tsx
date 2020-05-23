@@ -41,10 +41,9 @@ const component: React.SFC<Props> = (props: Props) => {
                     <td><TransitionOrDeleteContainer TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} /></td>
                 </tr>)}
         </tbody>
-        <Link to='/done'>⇨ already finished tasks</Link>
-        <Route path='/done' component={ShowDoneBox} />
     </Table>
-
+    <Link to='/done'>⇨ already finished tasks</Link>
+    <Route path='/done' component={ShowDoneBox} />
     </div>
     
     
