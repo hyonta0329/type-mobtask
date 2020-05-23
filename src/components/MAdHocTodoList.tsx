@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Table, Button} from 'react-bootstrap';
 import TransitionOrDeleteContainer from '../containers/TransitionOrDeleteContainer'
+import { BrowserRouter, Route, Link } from 'react-router-dom' 
+import ShowDoneBox from '../containers/ShowDoneBox'
 
 type Props = {
     todos: any,
@@ -19,8 +21,15 @@ const component: React.SFC<Props> = (props: Props) => {
       }).filter(function(a:any){
           return a.TaskStatus === 'NS'
       }).sort(compare);
+
+      const countmorningtodos = morningtodos.length;
+      const countmorningtodosNS = morningtodos.filter(function(a:any){
+          return a.TaskStatus === 'NS';
+      }).length;
+
     return (
     <div>
+        <div>あと<b>{countmorningtodosNS} 件</b></div>
     <Table>
         <thead className="thead-dark"><tr><th>Title</th><th>Comment</th><th>Due</th><th>Action</th></tr></thead>
         <tbody>
@@ -32,7 +41,10 @@ const component: React.SFC<Props> = (props: Props) => {
                     <td><TransitionOrDeleteContainer TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} /></td>
                 </tr>)}
         </tbody>
+        <Link to='/done'>⇨ already finished tasks</Link>
+        <Route path='/done' component={ShowDoneBox} />
     </Table>
+
     </div>
     
     

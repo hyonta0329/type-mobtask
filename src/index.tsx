@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { logger } from "./middleware"
 
 import App from './components/App';
+import ShowDoneBox from './containers/ShowDoneBox'
 import { rootReducer } from './modules';
 import { Provider } from 'react-redux';
 
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Route exact path='/' component={App} />
             <Route exact path='/home' component={App} />
             <Route exact path='/index.html' component={App} />
+            <Route path='/done' component={ShowDoneBox} />
         </BrowserRouter>  
         </div>
     </Provider>,
