@@ -200,11 +200,20 @@ function removeLoading(){
 }
 */
 
+function PromiseProcess(data: any){
+  return new Promise(function(callback){
+    setTimeout(function(){
+      callback(data);
+    }, 100);
+  });
+}
+
 export const logger = (store:any) => (next:any) => (action:any) => {
     console.log("before: %O", store.getState());
     next(action);
     console.log("after: %O", store.getState());
     if(action.type === 'SEND_LOGIN'){
+      dispLoading('ログイン中...')
       const usr = store.getState().login.login[0].username;
       const pas = store.getState().login.login[0].password;
       const authenticationDetails = new AuthenticationDetails({
@@ -220,7 +229,11 @@ export const logger = (store:any) => (next:any) => (action:any) => {
             var logintoken = authresult.getIdToken().getJwtToken();
             authtoken = logintoken;
             window.alert('ログインしました');
-            getTickets(logintoken, usr, store);
+            PromiseProcess(authtoken).then(function(data){
+              removeLoading();
+            }).then(function(data){
+              getTickets(logintoken, usr, store);
+            })
             /*PromiseProcess(logintoken).then((data) => {
               console.log('this is...' + data);
               return (data)
