@@ -12,6 +12,7 @@ type Props = {
     onSubmit: (TaskID: string, OperationType: string, TaskStatus: string) => void;
     TaskID: string;
     TaskStatus: string;
+    Due: string;
     //onClick: any;
     //dispatch: Dispatch<Action>;
 }
@@ -21,9 +22,9 @@ type State = {
     TaskID: string;
     OperationType: string;
     TaskStatus: string;
+    Due: string;
     show: boolean;
 }
-
 
 
 class Component extends React.Component<Props, State>{
@@ -35,6 +36,7 @@ class Component extends React.Component<Props, State>{
            OperationType: 'none',
            TaskStatus: 'None',
            show: true,
+           Due: this.props.Due,
         } 
     }
     handleSubmitDelete(event: React.FormEvent<HTMLFormElement>) {
@@ -69,10 +71,12 @@ class Component extends React.Component<Props, State>{
     handleShow(event: any){
         this.setState({show: false});
     }
+    newDue = this.props.Due.replace('-', '-\n')
 
     render() {
             return (
             <div>
+                {this.newDue}
                 <Table size="sm">
                     <tbody>
                             <tr id="buttontable">
@@ -80,8 +84,7 @@ class Component extends React.Component<Props, State>{
                             <form onSubmit={(e) => { this.handleSubmitTransition(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">⇄</Button>
                                 </form>
-                            </td></tr>
-                            <tr id="buttontable">
+                            </td>
                             <td>
                                 <form onSubmit={(e) => { this.handleSubmitDelete(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">-</Button>

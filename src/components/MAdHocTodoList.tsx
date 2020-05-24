@@ -31,14 +31,13 @@ const component: React.SFC<Props> = (props: Props) => {
     <div>
         <div>あと<b>{countmorningtodosNS} 件</b></div>
     <Table>
-        <thead className="thead-dark"><tr><th>Title</th><th>Comment</th><th>Due</th><th>Action</th></tr></thead>
+        <thead className="thead-dark"><tr><th>Title</th><th>Comment</th><th>Due/ Action</th></tr></thead>
         <tbody>
             {morningtodos.map((todo: any) => 
                 <tr>
                     <td>{todo.title}</td>
                     <td>{todo.Comment}</td>
-                    <td>{todo.Due}</td>
-                    <td><TransitionOrDeleteContainerAdHoc TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} /></td>
+                    <td><TransitionOrDeleteContainerAdHoc TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} Due={todo.Due}/></td>
                 </tr>)}
         </tbody>
     </Table>
@@ -46,7 +45,7 @@ const component: React.SFC<Props> = (props: Props) => {
     <Route path='/done' component={ShowDoneBox} />
     </div>
     
-    
+    //                    <td>{todo.Due}</td>
     //{morningtodos.map((todo: any) => <li>{todo.Comment}--{todo.title}--{todo.TaskStatus}--{todo.Due}</li>)}
     );
 };
