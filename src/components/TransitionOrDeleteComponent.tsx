@@ -76,12 +76,12 @@ class Component extends React.Component<Props, State>{
                 <Table size="sm">
                     <tbody>
                             <tr id="buttontable">
-                            <td>
+                            <td id={"text"+this.props.TaskStatus}>
                             <form onSubmit={(e) => { this.handleSubmitTransition(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">⇄</Button>
                                 </form>
                             </td>
-                            <td>
+                            <td id={"text"+this.props.TaskStatus}>
                                 <form onSubmit={(e) => { this.handleSubmitDelete(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">-</Button>
                                 </form>
