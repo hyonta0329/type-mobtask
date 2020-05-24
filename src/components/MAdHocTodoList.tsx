@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Table, Button} from 'react-bootstrap';
-import TransitionOrDeleteContainer from '../containers/TransitionOrDeleteContainer'
+import TransitionOrDeleteContainerAdHoc from '../containers/TransitionOrDeleteContainerAdHoc'
 import { BrowserRouter, Route, Link } from 'react-router-dom' 
 import ShowDoneBox from '../containers/ShowDoneBox'
 
@@ -38,7 +38,7 @@ const component: React.SFC<Props> = (props: Props) => {
                     <td>{todo.title}</td>
                     <td>{todo.Comment}</td>
                     <td>{todo.Due}</td>
-                    <td><TransitionOrDeleteContainer TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} /></td>
+                    <td><TransitionOrDeleteContainerAdHoc TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} /></td>
                 </tr>)}
         </tbody>
     </Table>

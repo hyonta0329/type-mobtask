@@ -80,7 +80,8 @@ class Component extends React.Component<Props, State>{
                             <form onSubmit={(e) => { this.handleSubmitTransition(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">⇄</Button>
                                 </form>
-                            </td>
+                            </td></tr>
+                            <tr id="buttontable">
                             <td>
                                 <form onSubmit={(e) => { this.handleSubmitDelete(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">-</Button>
