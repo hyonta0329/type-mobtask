@@ -52,6 +52,12 @@ class Component extends React.Component<Props, State>{
 
     }
 
+    handleSubmitMoveup(event: React.FormEvent<HTMLFormElement>){
+        event.preventDefault();
+        const TaskID = this.props.TaskID;
+        this.props.onSubmit(TaskID, 'sort', 'NS');
+    }
+
     handleSubmitTransition(event: React.FormEvent<HTMLFormElement>) {
         console.log('login button clicked...');
         event.preventDefault();
@@ -76,6 +82,11 @@ class Component extends React.Component<Props, State>{
                 <Table size="sm">
                     <tbody>
                             <tr id="buttontable">
+                            <td id={"text"+this.props.TaskStatus}>
+                            <form onSubmit={(e) => { this.handleSubmitMoveup(e); } }>
+                                <Button className="btn btn-pale" type="submit" size="sm">↑</Button>
+                            </form>
+                            </td>
                             <td id={"text"+this.props.TaskStatus}>
                             <form onSubmit={(e) => { this.handleSubmitTransition(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">⇄</Button>

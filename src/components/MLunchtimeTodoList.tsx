@@ -12,10 +12,17 @@ function compare( a: any, b: any ){
      return r;
      }
 
+function compareDue( a: any, b: any ){
+    var r = 0;
+    if( a.Due < b.Due ){ r = 1; }
+    else if( a.Due > b.Due ){ r = -1; }
+    return r;
+    }
+
 const component: React.SFC<Props> = (props: Props) => {
     const morningtodos = props.todos.todos.filter(function(a: any){
         return a.timezone === 'afternoon'
-      }).sort(compare);
+      }).sort(compareDue).sort(compare);
       const countmorningtodos = morningtodos.length;
       const countmorningtodosNS = morningtodos.filter(function(a:any){
           return a.TaskStatus === 'NS';
