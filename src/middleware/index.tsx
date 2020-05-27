@@ -125,6 +125,7 @@ function TransitionOrDeleteTicket(TaskID: string, type: string, TaskStatus: stri
     'TaskStatus':TaskStatus,
   }).then(function(response){
     console.log('adding change to ticket...');
+    console.log(type);
     removeLoading();
   }).then(function(){
     getTickets(token, usr, targetstore);

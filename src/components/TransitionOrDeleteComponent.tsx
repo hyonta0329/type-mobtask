@@ -58,6 +58,12 @@ class Component extends React.Component<Props, State>{
         this.props.onSubmit(TaskID, 'sort', 'NS');
     }
 
+    handleSubmitMovedown(event: React.FormEvent<HTMLFormElement>){
+        event.preventDefault();
+        const TaskID = this.props.TaskID;
+        this.props.onSubmit(TaskID, 'down', 'NS');
+    }
+
     handleSubmitTransition(event: React.FormEvent<HTMLFormElement>) {
         console.log('login button clicked...');
         event.preventDefault();
@@ -92,11 +98,19 @@ class Component extends React.Component<Props, State>{
                                     <Button className="btn btn-pale" type="submit" size="sm">⇄</Button>
                                 </form>
                             </td>
+                            </tr>
+                            <tr>
+                            <td id={"text"+this.props.TaskStatus}>
+                            <form onSubmit={(e) => { this.handleSubmitMovedown(e); } }>
+                                <Button className="btn btn-pale" type="submit" size="sm">↓</Button>
+                            </form>
+                            </td>
                             <td id={"text"+this.props.TaskStatus}>
                                 <form onSubmit={(e) => { this.handleSubmitDelete(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">-</Button>
                                 </form>
-                            </td></tr>
+                            </td>
+                            </tr>
                         </tbody>
                 </Table>
             </div>
