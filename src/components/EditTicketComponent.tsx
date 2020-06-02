@@ -115,7 +115,7 @@ class Component extends React.Component<Props, State>{
                     <Table id={"hiddentable"+this.state.TaskID}　className="hiddentable">
                         <tr>
                             <td>
-                                <input type="text" value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
+                                <input type="text"　size={10} value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
                             </td>
                             <td>
                                 <form onSubmit={(e) => { this.handleSubmitEdit(e); } }>
