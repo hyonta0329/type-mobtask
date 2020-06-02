@@ -134,6 +134,30 @@ function TransitionOrDeleteTicket(TaskID: string, type: string, TaskStatus: stri
   })
 }
 
+function EditTicket(TaskID: string, type: string, Due: string, title: string, Comment: string, token: string, usr: string, targetstore: any){
+  dispLoading(type);
+  const EditInstance = axios.create({
+    baseURL: "https://hmml9crysl.execute-api.us-east-2.amazonaws.com/prod/update-delete-mobtask",
+    headers: {
+      'Authorization': authtoken, 
+      },
+    method: 'POST',
+    responseType: 'json', 
+  });
+  EditInstance.post('', {
+    'TaskID': TaskID,
+    'OperationType':type,
+    'Due': Due,
+    'title': title,
+    'Comment': Comment,
+  }).then(function(response){
+    removeLoading();
+  }).then(function(response){
+    getTickets(token, usr, targetstore);
+  })
+}
+
+
 //loading effect function
 /* ------------------------------
  Loading イメージ表示関数
@@ -269,5 +293,10 @@ export const logger = (store:any) => (next:any) => (action:any) => {
     }else if(action.type === 'TRANSITION_OR_DELETE_TICKET'){
       const usr = store.getState().login.login[0].username;
       TransitionOrDeleteTicket(action.payload.TaskID, action.payload.OperationType, action.payload.TaskStatus, authtoken, usr, store);
+    }else if(action.type === 'EDIT_TICKET'){
+      const usr = store.getState().login.login[0].username;
+      EditTicket(action.payload.TaskID, action.payload.OperationType, action.payload.Due, action.payload.title, action.payload.Comment, authtoken, usr, store)
     }
   }
+
+  ///TaskID: string, type: string, Due: string, title: string, Comment: string, token: string, usr: string, targetstore: any

@@ -58,3 +58,16 @@ export const transitionOrDeleteTicket = (TaskID: string, type: string, TaskStatu
         type: 'TRANSITION_OR_DELETE_TICKET'
     }
 }
+
+export const editTicket = (TaskID: string, type: string, title: string, Comment: string, Due: string) => {
+    return {
+        payload: {
+            TaskID : TaskID,
+            OperationType : type,
+            title: title,
+            Comment: Comment,
+            Due: Due,
+        },
+        type: 'EDIT_TICKET'
+    }
+}

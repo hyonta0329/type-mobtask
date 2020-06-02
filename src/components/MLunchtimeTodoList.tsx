@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Table, Button} from 'react-bootstrap';
-import TransitionOrDeleteContainer from '../containers/TransitionOrDeleteContainer'
+import TransitionOrDeleteContainer from '../containers/TransitionOrDeleteContainer';
+import EditTicketContainer from '../containers/EditTicketContainer';
 
 type Props = {
     todos: any,
@@ -33,9 +34,11 @@ const component: React.SFC<Props> = (props: Props) => {
     <Table>
         <thead className="thead-dark"><tr><th>Title</th><th>Status</th><th>Action</th></tr></thead>
         <tbody>
-            {morningtodos.map((todo: any) => 
+        {morningtodos.map((todo: any) => 
                 <tr>
-                    <td id={"text"+todo.TaskStatus}>{todo.title}</td>
+                    <td id={"text"+todo.TaskStatus}>
+                    <EditTicketContainer　TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} title={todo.title} Comment={todo.Comment} Due={todo.Due} />
+                    </td>
                     <td id={todo.TaskStatus}>{todo.TaskStatus}</td>
                     <td id={"text"+todo.TaskStatus}><TransitionOrDeleteContainer TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} /></td>
                 </tr>)}

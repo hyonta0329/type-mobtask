@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Table, Button} from 'react-bootstrap';
 import TransitionOrDeleteContainer from '../containers/TransitionOrDeleteContainer'
+import EditTicketContainer from '../containers/EditTicketContainer'
+import { BrowserRouter, Route, Link } from 'react-router-dom' 
 
 type Props = {
     todos: any,
@@ -39,14 +41,16 @@ const component: React.SFC<Props> = (props: Props) => {
         <tbody>
             {morningtodos.map((todo: any) => 
                 <tr>
-                    <td id={"text"+todo.TaskStatus}>{todo.title}</td>
+                    <td id={"text"+todo.TaskStatus}>
+                    <EditTicketContainer　TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} title={todo.title} Comment={todo.Comment} Due={todo.Due} />
+                    </td>
                     <td id={todo.TaskStatus}>{todo.TaskStatus}</td>
                     <td id={"text"+todo.TaskStatus}><TransitionOrDeleteContainer TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} /></td>
                 </tr>)}
         </tbody>
     </Table>
     </div>
-    
+    //EditTicketContainer　TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} title={todo.title} Comment={todo.Comment} Due={todo.Due}
     
     //{morningtodos.map((todo: any) => <li>{todo.Comment}--{todo.title}--{todo.TaskStatus}--{todo.Due}</li>)}
     );

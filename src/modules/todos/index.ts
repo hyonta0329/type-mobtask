@@ -1,5 +1,5 @@
 import { addTodo, AddTodoAction } from './AddTodo';
-import { setTicket, SetTicketAction, putTicket, transitionOrDeleteTicket } from './Load';
+import { editTicket, SetTicketAction, putTicket, transitionOrDeleteTicket } from './Load';
 import { toggleTodo, ToggleTodoAction } from './ToggleTodo';
 
 type Actions
@@ -71,5 +71,6 @@ export const actionCreator = {
     toggleTodo,
     //addingPutTicket
     putTicket,
-    transitionOrDeleteTicket
+    transitionOrDeleteTicket,
+    editTicket,
 };
