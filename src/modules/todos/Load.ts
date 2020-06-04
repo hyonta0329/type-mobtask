@@ -59,7 +59,7 @@ export const transitionOrDeleteTicket = (TaskID: string, type: string, TaskStatu
     }
 }
 
-export const editTicket = (TaskID: string, type: string, title: string, Comment: string, Due: string) => {
+export const editTicket = (TaskID: string, type: string, title: string, Comment: string, Due: string, timezone: string) => {
     return {
         payload: {
             TaskID : TaskID,
@@ -67,6 +67,7 @@ export const editTicket = (TaskID: string, type: string, title: string, Comment:
             title: title,
             Comment: Comment,
             Due: Due,
+            timezone: timezone,
         },
         type: 'EDIT_TICKET'
     }

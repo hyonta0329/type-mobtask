@@ -25,7 +25,7 @@ function compare( a: any, b: any ){
 const component: React.SFC<Props> = (props: Props) => {
     const morningtodos = props.todos.todos.filter(function(a: any){
         return a.timezone === 'night'
-      }).sort(compareDue).sort(compare);
+      }).sort(compareDue);
       const countmorningtodos = morningtodos.length;
       const countmorningtodosNS = morningtodos.filter(function(a:any){
           return a.TaskStatus === 'NS';
@@ -39,7 +39,7 @@ const component: React.SFC<Props> = (props: Props) => {
         {morningtodos.map((todo: any) => 
                 <tr>
                     <td id={"text"+todo.TaskStatus}>
-                    <EditTicketContainer　TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} title={todo.title} Comment={todo.Comment} Due={todo.Due} />
+                    <EditTicketContainer　TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} title={todo.title} Comment={todo.Comment} Due={todo.Due} timezone={todo.timezone} />
                     </td>
                     <td id={todo.TaskStatus}>{todo.TaskStatus}</td>
                     <td id={"text"+todo.TaskStatus}><TransitionOrDeleteContainer TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} /></td>

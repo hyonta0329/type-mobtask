@@ -134,7 +134,7 @@ function TransitionOrDeleteTicket(TaskID: string, type: string, TaskStatus: stri
   })
 }
 
-function EditTicket(TaskID: string, type: string, Due: string, title: string, Comment: string, token: string, usr: string, targetstore: any){
+function EditTicket(TaskID: string, type: string, Due: string, title: string, Comment: string, token: string, usr: string, targetstore: any, timezone: any){
   dispLoading(type);
   const EditInstance = axios.create({
     baseURL: "https://hmml9crysl.execute-api.us-east-2.amazonaws.com/prod/update-delete-mobtask",
@@ -150,7 +150,9 @@ function EditTicket(TaskID: string, type: string, Due: string, title: string, Co
     'Due': Due,
     'title': title,
     'Comment': Comment,
+    'timezonezone': timezone,
   }).then(function(response){
+    console.log(response);
     removeLoading();
   }).then(function(response){
     getTickets(token, usr, targetstore);
@@ -295,7 +297,7 @@ export const logger = (store:any) => (next:any) => (action:any) => {
       TransitionOrDeleteTicket(action.payload.TaskID, action.payload.OperationType, action.payload.TaskStatus, authtoken, usr, store);
     }else if(action.type === 'EDIT_TICKET'){
       const usr = store.getState().login.login[0].username;
-      EditTicket(action.payload.TaskID, action.payload.OperationType, action.payload.Due, action.payload.title, action.payload.Comment, authtoken, usr, store)
+      EditTicket(action.payload.TaskID, action.payload.OperationType, action.payload.Due, action.payload.title, action.payload.Comment, authtoken, usr, store, action.payload.timezone)
     }
   }
 

@@ -9,12 +9,13 @@ import $ from "jquery";
 
 type Props = {
     //20200516
-    onSubmit: (TaskID: string, type: string, title: string, Comment: string, Due: string) => void;
+    onSubmit: (TaskID: string, type: string, title: string, Comment: string, Due: string, timezone: string) => void;
     TaskID: string;
     TaskStatus: string;
     title: string;
     Comment: string;
     Due: string;
+    timezone: string;
     //onClick: any;
     //dispatch: Dispatch<Action>;
 }
@@ -28,6 +29,7 @@ type State = {
     title: string;
     Comment: string;
     Due: string;
+    timezone: string;
 }
 
 var text = '';
@@ -44,6 +46,7 @@ class Component extends React.Component<Props, State>{
            title: this.props.title,
            Comment: this.props.Comment,
            Due: this.props.Due,
+           timezone: "NA",
         } 
     }
     handleSubmitEdit(event: React.FormEvent<HTMLFormElement>) {
@@ -52,7 +55,7 @@ class Component extends React.Component<Props, State>{
             //const TaskID = this.state.Comment;
             //20200516
             const TaskID = this.props.TaskID;
-            this.props.onSubmit(TaskID, 'edit_title', this.state.title, this.state.Comment, this.state.Due);
+            this.props.onSubmit(TaskID, 'edit_title', this.state.title, this.state.Comment, this.state.Due, this.state.timezone);
             //this.setState({ value: '' });
         }
 
@@ -83,6 +86,14 @@ class Component extends React.Component<Props, State>{
     handleShow(event: any){
         this.setState({show: false});
     }
+    
+    handleChangeTIMEZONE(type: any){
+        //type.preventDefault();
+        this.setState({
+            timezone: type
+        })
+        console.log(type);
+    } 
 
     showPopUp(){
         text = this.state.title;
@@ -114,10 +125,29 @@ class Component extends React.Component<Props, State>{
                     {this.props.title}&nbsp;<Button size="sm" className="btn btn-pale" onClick={(e: any) => {this.showTable(e, this.state.TaskID);}}>✏︎</Button>
                     <Table id={"hiddentable"+this.state.TaskID}　className="hiddentable">
                         <tr>
-                            <td>
+                            <td id="edithead">
+                                title:
+                            </td>
+                            <td id="edithead"> 
                                 <input type="text"　size={10} value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
                             </td>
-                            <td>
+                            </tr>
+                            <tr>
+                                <td id="edithead">timezone: </td>
+                            <td id="edithead">
+                                    <select name="timezone" id="tasktimezone" onChange={(e) => {this.handleChangeTIMEZONE(e.target.value)}}> 
+                                    <option value="No Change" onClick={(e)=>{
+                                            this.handleChangeTIMEZONE('NA');
+                                            console.log('NA!');
+                                        }
+                                        }>No Change</option>
+                                    <option value="afternoon" onClick={(e)=>{this.handleChangeTIMEZONE('morning');}}>Morning</option>
+                                    <option value="afternoon" onClick={(e)=>{this.handleChangeTIMEZONE('afternoon');}}>Afternoon</option>
+                                    <option value="night" onClick={(e)=>{this.handleChangeTIMEZONE('night');}}>Night</option>
+                                    <option value="holiday" onClick={(e)=>{this.handleChangeTIMEZONE('holiday');}}>Holiday</option>
+                                    </select>
+                                    </td>
+                            <td id="edithead">
                                 <form onSubmit={(e) => { this.handleSubmitEdit(e); } }>
                                 <Button className="btn btn-pale" type="submit" size="sm">OK</Button></form>
                             </td>

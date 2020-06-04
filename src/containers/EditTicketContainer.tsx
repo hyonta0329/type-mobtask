@@ -20,8 +20,8 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
     console.log('revoking onSubmit in Container...');
     return {
-        onSubmit: (TaskID: string, type: string, title: string, Comment: string, Due: string) => {
-            dispatch(actionCreator.todos.editTicket(TaskID, type, title, Comment, Due));
+        onSubmit: (TaskID: string, type: string, title: string, Comment: string, Due: string, timezone: string) => {
+            dispatch(actionCreator.todos.editTicket(TaskID, type, title, Comment, Due, timezone));
             console.log(TaskID+type+title);
         }
     }
