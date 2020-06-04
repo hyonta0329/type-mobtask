@@ -147,6 +147,8 @@ class Component extends React.Component<Props, State>{
                                     <option value="holiday" onClick={(e)=>{this.handleChangeTIMEZONE('holiday');}}>Holiday</option>
                                     </select>
                                     </td>
+                            </tr><tr>
+                                <td></td>
                             <td id="edithead">
                                 <form onSubmit={(e) => { this.handleSubmitEdit(e); } }>
                                 <Button className="btn btn-pale" type="submit" size="sm">OK</Button></form>
