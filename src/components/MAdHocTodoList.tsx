@@ -3,6 +3,7 @@ import { Table, Button} from 'react-bootstrap';
 import TransitionOrDeleteContainerAdHoc from '../containers/TransitionOrDeleteContainerAdHoc'
 import { BrowserRouter, Route, Link } from 'react-router-dom' 
 import ShowDoneBox from '../containers/ShowDoneBox'
+import EditTicketContainerAdHoc from '../containers/EditTicketContainerAdHoc';
 
 type Props = {
     todos: any,
@@ -35,7 +36,9 @@ const component: React.SFC<Props> = (props: Props) => {
         <tbody>
             {morningtodos.map((todo: any) => 
                 <tr>
-                    <td>{todo.title}</td>
+                    <td>
+                    <EditTicketContainerAdHoc　TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} title={todo.title} Comment={todo.Comment} Due={todo.Due} timezone={todo.timezone} />
+                    </td>
                     <td>{todo.Comment}</td>
                     <td><TransitionOrDeleteContainerAdHoc TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} Due={todo.Due}/></td>
                 </tr>)}
@@ -43,6 +46,7 @@ const component: React.SFC<Props> = (props: Props) => {
     </Table>
     <Link to='/done'>⇨ already finished tasks</Link>
     <Route path='/done' component={ShowDoneBox} />
+
     </div>
     
     //                    <td>{todo.Due}</td>
