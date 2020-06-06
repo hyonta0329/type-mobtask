@@ -150,7 +150,6 @@ class Component extends React.Component<Props, State>{
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td id="edithead">
                                 <form onSubmit={(e) => { this.handleSubmitEdit(e); } }>
                                 <Button className="btn btn-pale" type="submit" size="sm">OK</Button></form>
