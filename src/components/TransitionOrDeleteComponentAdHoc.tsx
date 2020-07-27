@@ -76,7 +76,7 @@ class Component extends React.Component<Props, State>{
     
 
     render() {
-            const DayArray = ["月", "火", "水", "木", "金", "土", "日"];
+            const DayArray = ["日", "月", "火", "水", "木", "金", "土"];
             const DateOfDue = new Date(this.props.Due).getDay();
             console.log(DateOfDue);
             const SupplementDayInfo = DayArray[DateOfDue];
