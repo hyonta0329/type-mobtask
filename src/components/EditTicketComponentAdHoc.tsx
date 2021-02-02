@@ -120,6 +120,8 @@ class Component extends React.Component<Props, State>{
     }
 
     render() {
+            const title = this.state.title;
+            const comment = this.state.Comment
             return (
                 <div>
                     {this.props.title}&nbsp;<Button size="sm" className="btn btn-pale" onClick={(e: any) => {this.showTable(e, this.state.TaskID);}}>✏︎</Button>

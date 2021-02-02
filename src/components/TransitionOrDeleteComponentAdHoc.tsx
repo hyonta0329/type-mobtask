@@ -71,11 +71,12 @@ class Component extends React.Component<Props, State>{
     handleShow(event: any){
         this.setState({show: false});
     }
-    newDue = this.props.Due.replace('-', '-\n');
+    // newDue = this.props.Due.replace('-', '-\n');
     
     
 
     render() {
+            const newDue = this.props.Due.replace('-', '-\n');
             const DayArray = ["日", "月", "火", "水", "木", "金", "土"];
             const DateOfDue = new Date(this.props.Due).getDay();
             console.log(DateOfDue);
@@ -83,7 +84,7 @@ class Component extends React.Component<Props, State>{
 
             return (
             <div>
-                {this.newDue + "-" + SupplementDayInfo}
+                {newDue + "-" + SupplementDayInfo}
                 <Table size="sm">
                     <tbody>
                             <tr id="buttontable">

@@ -23,6 +23,7 @@ const component: React.SFC<Props> = (props: Props) => {
           return a.TaskStatus === 'NS'
       }).sort(compare);
 
+      const currenttodos = morningtodos;
       const countmorningtodos = morningtodos.length;
       const countmorningtodosNS = morningtodos.filter(function(a:any){
           return a.TaskStatus === 'NS';
@@ -34,7 +35,7 @@ const component: React.SFC<Props> = (props: Props) => {
     <Table>
         <thead className="thead-dark"><tr><th>Title</th><th>Comment</th><th>Due/ Action</th></tr></thead>
         <tbody>
-            {morningtodos.map((todo: any) => 
+            {currenttodos.map((todo: any) => 
                 <tr>
                     <td>
                     <EditTicketContainerAdHoc　TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} title={todo.title} Comment={todo.Comment} Due={todo.Due} timezone={todo.timezone} />
@@ -48,9 +49,6 @@ const component: React.SFC<Props> = (props: Props) => {
     <Route path='/done' component={ShowDoneBox} />
 
     </div>
-    
-    //                    <td>{todo.Due}</td>
-    //{morningtodos.map((todo: any) => <li>{todo.Comment}--{todo.title}--{todo.TaskStatus}--{todo.Due}</li>)}
     );
 };
 
