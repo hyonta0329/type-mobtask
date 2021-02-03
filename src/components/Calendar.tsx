@@ -87,6 +87,7 @@ class Component extends React.Component<Props, State>{
             return (
                 <div className = "container">
                 <div className="wrapper">
+                    <br />
                     <h3 className="form-signin-heading" >Calendar</h3>
                     <hr className="colorgraph" />
                     <Calendar
