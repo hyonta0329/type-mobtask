@@ -2,3 +2,7 @@ table th {
     background-color: #262D40;
     color: #fff;
   }
+
+p {
+    white-space: pre-wrap;
+  }
