@@ -4,7 +4,6 @@ import TransitionOrDeleteContainerAdHoc from '../containers/TransitionOrDeleteCo
 import { BrowserRouter, Route, Link } from 'react-router-dom' 
 import ShowDoneBox from '../containers/ShowDoneBox'
 import EditTicketContainerAdHoc from '../containers/EditTicketContainerAdHoc';
-import RenderHTMLTextContainer from '../containers/RenderHTMLTextContainter';
 import marked      from 'marked';
 import highlightjs from 'highlight.js';
 
