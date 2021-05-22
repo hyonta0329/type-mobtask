@@ -124,7 +124,7 @@ class Component extends React.Component<Props, State>{
                                 <tr>
                                 <td>Comment</td>
                                     <td>
-                                        <textarea value={this.state.Comment} cols={40} rows={17} onChange={this.handleChangeCOMMENTtextArea.bind(this)}/>
+                                        <textarea className="form-control" value={this.state.Comment} rows={17} onChange={this.handleChangeCOMMENTtextArea.bind(this)}/>
                                     </td>
                                 </tr>
                                 <tr>

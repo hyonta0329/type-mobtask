@@ -87,12 +87,14 @@ class Component extends React.Component<Props, State>{
                 {newDue + "-" + SupplementDayInfo}
                 <Table size="sm">
                     <tbody>
-                            <tr id="buttontable">
+                            <tr>
                             <td>
                             <form onSubmit={(e) => { this.handleSubmitTransition(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">⇄</Button>
                                 </form>
                             </td>
+                            </tr>
+                            <tr>
                             <td>
                                 <form onSubmit={(e) => { this.handleSubmitDelete(e); } }>
                                     <Button className="btn btn-pale" type="submit" size="sm">-</Button>

@@ -129,7 +129,7 @@ class Component extends React.Component<Props, State>{
                                 title:
                             </td>
                             <td id="edithead"> 
-                                <input type="text"　size={10} value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
+                                <input type="text"　size={30} value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
                             </td>
                             </tr>
                             <tr>

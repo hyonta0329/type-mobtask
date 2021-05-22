@@ -130,7 +130,9 @@ class Component extends React.Component<Props, State>{
             const comment = this.state.Comment
             return (
                 <div>
-                    {this.props.title}&nbsp;<Button size="sm" className="btn btn-pale" onClick={(e: any) => {this.showTable(e, this.state.TaskID);}}>✏︎</Button>
+                    {this.props.title}
+                    <br />
+                    <Button size="sm" className="btn btn-pale" onClick={(e: any) => {this.showTable(e, this.state.TaskID);}}>✏︎</Button>
                     <Table id={"hiddentable"+this.state.TaskID}　className="hiddentable">
                         <tr>
                             <td id="edithead">
@@ -139,14 +141,14 @@ class Component extends React.Component<Props, State>{
                         </tr>
                         <tr>
                             <td id="edithead"> 
-                                <input type="text"　size={10} value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
+                                <input type="text"　size={30} value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
                             </td>
                         </tr>
                         <tr>
                                 <td id="edithead">Comment: </td></tr>
                         <tr>
                             <td>
-                                <textarea value={this.state.Comment} cols={40} rows={17} onChange={this.handleChangeCOMMENTtextArea.bind(this)}/>
+                                <textarea id="textarea" value={this.state.Comment} cols={30} rows={17} onChange={this.handleChangeCOMMENTtextArea.bind(this)}/>
                             </td>
                         </tr>
                         <tr>
