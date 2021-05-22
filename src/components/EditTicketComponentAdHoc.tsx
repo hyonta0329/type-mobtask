@@ -72,6 +72,12 @@ class Component extends React.Component<Props, State>{
         this.setState({
             Comment: event.target.value
         })
+    }
+    handleChangeCOMMENTtextArea(event: React.ChangeEvent<HTMLTextAreaElement>){
+        event.preventDefault();
+        this.setState({
+            Comment: event.target.value
+        })
     }  
     handleChangeDUE(event: React.ChangeEvent<HTMLInputElement>){
         event.preventDefault();
@@ -139,8 +145,8 @@ class Component extends React.Component<Props, State>{
                         <tr>
                                 <td id="edithead">Comment: </td></tr>
                         <tr>
-                            <td id="edithead">
-                                <input size={20} onChange={this.handleChangeCOMMENT.bind(this)} value={this.state.Comment} />
+                            <td>
+                                <textarea value={this.state.Comment} cols={40} rows={17} onChange={this.handleChangeCOMMENTtextArea.bind(this)}/>
                             </td>
                         </tr>
                         <tr>

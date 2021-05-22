@@ -4,9 +4,35 @@ import TransitionOrDeleteContainerAdHoc from '../containers/TransitionOrDeleteCo
 import { BrowserRouter, Route, Link } from 'react-router-dom' 
 import ShowDoneBox from '../containers/ShowDoneBox'
 import EditTicketContainerAdHoc from '../containers/EditTicketContainerAdHoc';
+import RenderHTMLTextContainer from '../containers/RenderHTMLTextContainter';
+import marked      from 'marked';
+import highlightjs from 'highlight.js';
+
+marked.setOptions({
+    highlight: function(code, lang) {
+      return highlightjs.highlightAuto(code, [lang]).value;
+    },               // シンタックスハイライトに使用する関数の設定
+    pedantic: false, // trueの場合はmarkdown.plに準拠する gfmを使用する場合はfalseで大丈夫
+    gfm: true,       // GitHub Flavored Markdownを使用
+    breaks: true,    // falseにすると改行入力は末尾の半角スペース2つになる
+    sanitize: true,  // trueにすると特殊文字をエスケープする
+    silent: false    // trueにするとパースに失敗してもExceptionを投げなくなる
+  });
 
 type Props = {
     todos: any,
+}
+
+function createElementFromHTML(html: any) {
+    const tempEl = document.createElement('div');
+    tempEl.innerHTML = html;
+    return tempEl.firstElementChild;
+}
+
+const HTMLComponent = (props: string) => {
+    return(
+        <span dangerouslySetInnerHTML={{__html: props}}></span>
+    );
 }
 
 function compare( a: any, b: any ){
@@ -22,9 +48,7 @@ const component: React.SFC<Props> = (props: Props) => {
       }).filter(function(a:any){
           return a.TaskStatus === 'NS'
       }).sort(compare);
-
       const currenttodos = morningtodos;
-      const countmorningtodos = morningtodos.length;
       const countmorningtodosNS = morningtodos.filter(function(a:any){
           return a.TaskStatus === 'NS';
       }).length;
@@ -40,7 +64,9 @@ const component: React.SFC<Props> = (props: Props) => {
                     <td>
                     <EditTicketContainerAdHoc　TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} title={todo.title} Comment={todo.Comment} Due={todo.Due} timezone={todo.timezone} />
                     </td>
-                    <td>{todo.Comment}</td>
+                    <td>
+                        {HTMLComponent(marked(todo.Comment))}
+                    </td>
                     <td><TransitionOrDeleteContainerAdHoc TaskID={todo.TaskID} TaskStatus={todo.TaskStatus} Due={todo.Due}/></td>
                 </tr>)}
         </tbody>

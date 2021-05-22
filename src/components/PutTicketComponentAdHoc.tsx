@@ -6,6 +6,8 @@ import { putTicket } from '../modules/todos/Load'
 import { type } from 'os';
 import { Table, Card, Accordion, Tabs, Tab, Button} from 'react-bootstrap';
 import '../style.css';
+import marked      from 'marked';
+import highlightjs from 'highlight.js';
 
 type Props = {
     //20200516
@@ -28,8 +30,6 @@ type State = {
 
 }
 
-
-
 class Component extends React.Component<Props, State>{
     constructor(props: Props) {
         super(props);
@@ -40,7 +40,7 @@ class Component extends React.Component<Props, State>{
            Priority: 'N/A',
            timezone: 'notapplicable',
            Comment: 'comment',
-           Issuetype: 'ad-hoc',
+           Issuetype: 'markdown',
            //TaskID: '',
            showModal: false,
            show: false,
@@ -83,7 +83,13 @@ class Component extends React.Component<Props, State>{
         this.setState({
             Comment: event.target.value
         })
-    }  
+    }
+    handleChangeCOMMENTtextArea(event: React.ChangeEvent<HTMLTextAreaElement>){
+        event.preventDefault();
+        this.setState({
+            Comment: event.target.value
+        })
+    }   
     handleChangeDUE(event: React.ChangeEvent<HTMLInputElement>){
         event.preventDefault();
         this.setState({
@@ -91,10 +97,11 @@ class Component extends React.Component<Props, State>{
         })
     }  
 
+
     handleShow = (event: any) => this.setState({showModal: true});
     handleClose = (event: any) => this.setState({showModal: false});
     handleSelect = (key: string) => this.setState({key: key});
-
+    
     render() {
             return (
             <div>
@@ -105,7 +112,7 @@ class Component extends React.Component<Props, State>{
                         Create New Ad Hoc Task
                     </div>
                     <Card>
-                        <Card.Body>
+                        <Card.Body>                           
                         <Table className="centerbutton">                            
                             <tbody>
                                 <tr>
@@ -117,7 +124,7 @@ class Component extends React.Component<Props, State>{
                                 <tr>
                                 <td>Comment</td>
                                     <td>
-                                        <input className="form-control" placeholder="Title" id="title" onChange={(e) => { this.handleChangeCOMMENT(e); }} />
+                                        <textarea value={this.state.Comment} cols={40} rows={17} onChange={this.handleChangeCOMMENTtextArea.bind(this)}/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -136,7 +143,6 @@ class Component extends React.Component<Props, State>{
                                     </td>
                                 </tr>
                             </tbody>
-
                         </Table>
                         </Card.Body>
                         </Card>                                
