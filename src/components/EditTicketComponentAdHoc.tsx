@@ -141,14 +141,14 @@ class Component extends React.Component<Props, State>{
                         </tr>
                         <tr>
                             <td id="edithead"> 
-                                <input type="text"　size={10} value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
+                                <input type="text" value={this.state.title}  id="title" onChange={this.handleChangeTITLE.bind(this)} /> 
                             </td>
                         </tr>
                         <tr>
                                 <td id="edithead">Comment: </td></tr>
                         <tr>
                             <td>
-                                <textarea id="textarea" value={this.state.Comment} cols={10} rows={17} onChange={this.handleChangeCOMMENTtextArea.bind(this)}/>
+                                <textarea id="textarea" value={this.state.Comment} rows={17} onChange={this.handleChangeCOMMENTtextArea.bind(this)}/>
                             </td>
                         </tr>
                         <tr>
