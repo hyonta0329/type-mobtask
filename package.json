@@ -23,7 +23,7 @@
     "easymde": "^2.15.0",
     "highlight.js": "^10.7.2",
     "jquery": "^3.5.1",
-    "marked": "^2.0.5",
+    "marked": "^4.0.10",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-calendar": "3.3.1",
